@@ -181,7 +181,7 @@ section>*:not(.bg-layer){position:relative;z-index:2}
 .back-top{display:flex;align-items:center;justify-content:center;width:43px;height:43px;border-radius:50%;background:var(--choc);color:var(--cream);border:none;cursor:pointer;font-size:1.1rem;margin:24px auto 0;box-shadow:0 4px 12px rgba(44,18,6,.3);text-decoration:none}
 </style>
 
-<!-- Firebase SDK -->
+<!-- Firebase SDK (Script mode) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 </head>
@@ -592,16 +592,16 @@ section>*:not(.bg-layer){position:relative;z-index:2}
 </section>
 
 <script>
-// ── KONFIGURASI FIREBASE REALTIME DATABASE ──
-// Ganti isi variabel di bawah dengan konfigurasi Firebase dari console Firebase Anda
+// ── FIREBASE CONFIGURATION (DARI DASHBOARD FIREBASE KAMU) ──
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-  projectId: "YOUR_PROJECT",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDtc2_QojawfbUzNuw6ABhJ3Ux1qwIFkp4",
+  authDomain: "sheva-4cf42.firebaseapp.com",
+  databaseURL: "https://sheva-4cf42-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "sheva-4cf42",
+  storageBucket: "sheva-4cf42.firebasestorage.app",
+  messagingSenderId: "73573173819",
+  appId: "1:73573173819:web:57aaf5c43afddbf6316a1e",
+  measurementId: "G-JSVQQ481M8"
 };
 
 // Inisialisasi Firebase
@@ -609,7 +609,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const rsvpRef = db.ref('rsvp_iga_eric');
 
-// Submit Form ke Database
+// Submit Form ke Database Firebase
 function submitR(e){
   e.preventDefault();
   const name = document.getElementById('rn').value.trim();
