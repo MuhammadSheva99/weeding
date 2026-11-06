@@ -163,29 +163,79 @@ section>*:not(.bg-layer){position:relative;z-index:2}
 .cd-lbl{font-family:var(--font-cinzel);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--choc4);margin-top:6px}
 
 /* ══════════ SEC 4 — CALENDAR ══════════ */
+/* ══════════ SEC 4 — RESEPSI (GANTI KALENDER) ══════════ */
 #sec4{background:#F6EDE0}
-.cal-month{font-family:var(--font-cinzel);font-size:clamp(1.6rem,5.8vw,2.1rem);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--choc);text-align:center;margin-bottom:14px}
-.cal-wrap{width:min(292px,83vw)}
-.cal-head{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:5px}
-.cal-head span{font-family:var(--font-cinzel);font-size:.55rem;letter-spacing:.08em;color:var(--choc4);padding:2px 0}
-.cal-body{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-.cc{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--choc2);border-radius:50%}
-.cc.hl{background:var(--choc);color:var(--cream);font-weight:700;position:relative}
-.cc.hl::after{content:'♥';position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);font-size:.62rem;color:var(--choc)}
+.event-card{
+  width:min(300px,85vw);
+  background:rgba(255,255,255,.9);
+  border:1.5px solid var(--choc3);
+  border-radius:6px;
+  padding:28px 20px;
+  text-align:center;
+  box-shadow:0 8px 24px rgba(44,18,6,.12);
+  position:relative;
+}
+.event-card::before{
+  content:'';
+  position:absolute;
+  inset:6px;
+  border:1px solid rgba(44,18,6,.15);
+  border-radius:4px;
+  pointer-events:none;
+}
+.event-badge{
+  font-family:var(--font-cinzel);
+  font-size:.65rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--choc3);
+  display:block;
+  margin-bottom:8px;
+}
+.event-title{
+  font-family:var(--font-cinzel);
+  font-size:clamp(1.4rem,5.2vw,1.8rem);
+  font-weight:600;
+  letter-spacing:.1em;
+  color:var(--choc);
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.event-divider{
+  width:45%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--choc3),transparent);
+  margin:12px auto;
+}
+.event-day{
+  font-family:var(--font-cinzel);
+  font-size:1.05rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  color:var(--choc2);
+  display:block;
+}
+.event-date{
+  font-family:var(--font-serif);
+  font-size:clamp(1.35rem,4.8vw,1.65rem);
+  font-style:italic;
+  color:var(--choc);
+  display:block;
+  margin:3px 0;
+}
+.event-time{
+  font-family:var(--font-body);
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.05em;
+  color:var(--choc4);
+  display:inline-block;
+  background:rgba(238,224,204,.5);
+  padding:4px 12px;
+  border-radius:20px;
+  margin-top:8px;
+}
 
-/* ══════════ SEC 5 — BRIDE & GROOM ══════════ */
-#sec5{background:radial-gradient(circle at 50% 50%,#3A1A08,#1C0A03)}
-.bg-card{width:min(286px,81vw);background:var(--choc);border:2px solid rgba(232,216,196,.28);border-radius:16px 16px 50px 50px / 16px 16px 28px 28px;padding:30px 22px 34px;text-align:center;position:relative;box-shadow:inset 0 0 60px rgba(0,0,0,.22)}
-.bg-floral{position:absolute;top:-17px;right:-5px;width:70px;opacity:.86;pointer-events:none}
-.bismillah{font-size:1.65rem;color:var(--cream);margin-bottom:7px;letter-spacing:.04em}
-.assalam{font-family:var(--font-serif);font-style:italic;font-size:.9rem;color:var(--cream2);margin-bottom:8px}
-.invite-p{font-size:.74rem;color:rgba(232,216,196,.62);line-height:1.85;margin-bottom:14px}
-.invite-p em{font-style:italic;color:var(--cream2)}
-.bdiv{width:48%;height:1px;background:rgba(232,216,196,.18);margin:12px auto}
-.bname{font-family:var(--font-cinzel);font-size:clamp(1.15rem,4.2vw,1.4rem);font-weight:600;letter-spacing:.08em;color:var(--cream);display:block;margin:6px 0 2px;line-height:1.3}
-.bplbl{font-family:var(--font-cinzel);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream2)}
-.bpname{font-size:.7rem;color:rgba(232,216,196,.58);margin-top:3px}
-.pilihan{font-family:var(--font-serif);font-style:italic;font-size:.82rem;color:rgba(232,216,196,.52);margin:11px 0}
 
 /* ══════════ SEC 7 — LOCATION ══════════ */
 #sec7{background:#F6EDE0}
@@ -365,6 +415,27 @@ section>*:not(.bg-layer){position:relative;z-index:2}
 
 <!-- ══ SEC 2 — COUPLE ══ -->
 <section id="sec2">
+  <div class="bg-card reveal">
+    <svg class="bg-floral" viewBox="0 0 70 85" fill="none">
+      <path d="M35,75 Q8,55 4,27 Q21,45 35,35" fill="#F7EFE3" opacity=".55"/>
+      <ellipse cx="4" cy="27" rx="12" ry="7" fill="#F7EFE3" opacity=".65" transform="rotate(-28,4,27)"/>
+      <ellipse cx="21" cy="43" rx="10" ry="6" fill="#EEE0CC" opacity=".55" transform="rotate(-13,21,43)"/>
+      <ellipse cx="37" cy="33" rx="8" ry="5" fill="#3B1A0E" opacity=".78" transform="rotate(8,37,33)"/>
+      <ellipse cx="12" cy="21" rx="7" ry="4" fill="#3B1A0E" opacity=".68" transform="rotate(-38,12,21)"/>
+    </svg>
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+    <div class="assalam">Assalamu’alaikum Wr. Wb.</div>
+    <p class="invite-p">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.<br>Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.</p>
+    <div class="bdiv"></div>
+    <span class="bname">Iga Natasia Mawarni</span>
+    <div class="pilihan">dengan</div>
+    <div class="bdiv"></div>
+    <span class="bname">Eric Arfian Syahrul Firmansyah</span>
+  </div>
+</section>
+
+<!-- ══ SEC 3 — COUNTDOWN ══ -->
+<section id="sec3">
   <div class="bg-layer">
     <svg viewBox="0 0 390 844" preserveAspectRatio="xMidYMid slice">
       <defs><radialGradient id="bg2" cx="50%" cy="40%" r="65%"><stop offset="0%" stop-color="#F9F2E6"/><stop offset="100%" stop-color="#EAD4B0"/></radialGradient></defs>
@@ -416,15 +487,15 @@ section>*:not(.bg-layer){position:relative;z-index:2}
       </div>
       <div class="arch-bot">
         <div class="arch-dline"></div>
-        <span class="arch-dlbl">Tanggal Pernikahan</span>
-        <span class="arch-dval">22 November 2026</span>
+        <span class="arch-dlbl">Tanggal Resepsi</span>
+        <span class="arch-dval">21 November 2026</span>
         <div class="arch-dline"></div>
         <span class="arch-dlbl" style="display:block;margin-top:6px">Lokasi</span>
         <span style="font-family:var(--font-serif);font-style:italic;font-size:.93rem;color:var(--choc3);display:block">Belimbing Kidul 05/01</span>
         <span style="font-size:.7rem;color:var(--choc4)">Kaliwungu, Kabupaten Kudus</span>
       </div>
     </div>
-    <div class="dc-badge"><span class="dd">22</span><span class="dm">November</span><span class="dy">2026</span></div>
+    <div class="dc-badge"><span class="dd">21</span><span class="dm">November</span><span class="dy">2026</span></div>
     <div class="mono">I&amp;E</div>
   </div>
 
@@ -439,10 +510,6 @@ section>*:not(.bg-layer){position:relative;z-index:2}
     </svg>
     <span id="music-label">Putar Musik</span>
   </div>
-</section>
-
-<!-- ══ SEC 3 — COUNTDOWN ══ -->
-<section id="sec3">
   <div class="bg-layer">
     <svg viewBox="0 0 390 844" preserveAspectRatio="xMidYMid slice">
       <defs><radialGradient id="bg3" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#F8F0E4"/><stop offset="100%" stop-color="#E8D0A8"/></radialGradient></defs>
@@ -480,7 +547,7 @@ section>*:not(.bg-layer){position:relative;z-index:2}
   <p style="font-family:var(--font-serif);font-style:italic;font-size:.85rem;color:var(--choc4);margin-top:14px" class="reveal">Menuju hari bahagia ✦</p>
 </section>
 
-<!-- ══ SEC 4 — CALENDAR ══ -->
+<!-- ══ SEC 4 — RESEPSI ══ -->
 <section id="sec4">
   <div class="bg-layer">
     <svg viewBox="0 0 390 844" preserveAspectRatio="xMidYMid slice">
@@ -504,37 +571,25 @@ section>*:not(.bg-layer){position:relative;z-index:2}
       </g>
     </svg>
   </div>
-  <div class="cal-month reveal">November 2026</div>
-  <div class="cal-wrap reveal">
-    <div class="cal-head"><span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span></div>
-    <div class="cal-body" id="calB"></div>
+
+  <div class="event-card reveal">
+    <!-- Ornamen Vektor Bunga -->
+    <svg width="38" height="38" viewBox="0 0 60 60" fill="none" style="margin:0 auto 8px;display:block">
+      <path d="M30,5 Q35,22 52,30 Q35,38 30,55 Q25,38 8,30 Q25,22 30,5Z" fill="#3B1A0E" opacity=".25"/>
+      <circle cx="30" cy="30" r="16" fill="none" stroke="#6B3320" stroke-width="1.2"/>
+      <path d="M30,17 C35,25 43,30 43,30 C43,30 35,35 30,43 C25,35 17,30 17,30 C17,30 25,25 30,17Z" fill="#6B3320"/>
+    </svg>
+
+    <span class="event-badge">Acara Pernikahan</span>
+    <div class="event-title">Resepsi</div>
+    <div class="event-divider"></div>
+    <span class="event-day">Sabtu</span>
+    <span class="event-date">21 November 2026</span>
+    <div class="event-divider"></div>
+    <div class="event-time">Pukul 10.00 WIB - Selesai</div>
   </div>
 </section>
 
-<!-- ══ SEC 5 — BRIDE & GROOM ══ -->
-<section id="sec5">
-  <div class="bg-card reveal">
-    <svg class="bg-floral" viewBox="0 0 70 85" fill="none">
-      <path d="M35,75 Q8,55 4,27 Q21,45 35,35" fill="#F7EFE3" opacity=".55"/>
-      <ellipse cx="4" cy="27" rx="12" ry="7" fill="#F7EFE3" opacity=".65" transform="rotate(-28,4,27)"/>
-      <ellipse cx="21" cy="43" rx="10" ry="6" fill="#EEE0CC" opacity=".55" transform="rotate(-13,21,43)"/>
-      <ellipse cx="37" cy="33" rx="8" ry="5" fill="#3B1A0E" opacity=".78" transform="rotate(8,37,33)"/>
-      <ellipse cx="12" cy="21" rx="7" ry="4" fill="#3B1A0E" opacity=".68" transform="rotate(-38,12,21)"/>
-    </svg>
-    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
-    <div class="assalam">Assalamu’alaikum Wr. Wb.</div>
-    <p class="invite-p">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang<br><em>Bapak/Ibu/Saudara/i</em><br>pada acara pernikahan putra-putri kami</p>
-    <div class="bdiv"></div>
-    <span class="bname">Iga Natasia Mawarni</span>
-    <div class="bplbl">Putri dari</div>
-    <div class="bpname">Bapak Abdul Hanif &amp; Ibu Halimatun</div>
-    <div class="pilihan">dengan</div>
-    <div class="bdiv"></div>
-    <span class="bname">Eric Arfian Syahrul Firmansyah</span>
-    <div class="bplbl">Putra dari</div>
-    <div class="bpname">Bapak Zain &amp; Ibu Kasmah</div>
-  </div>
-</section>
 
 <!-- ══ SEC 7 — LOCATION ══ -->
 <section id="sec7">
@@ -857,18 +912,6 @@ function tick(){
 }
 tick();setInterval(tick,1000);
 
-// Calendar November 2026
-(()=>{
-  const b=document.getElementById('calB');
-  const fd=new Date(2026,10,1).getDay();
-  for(let i=0;i<fd;i++){const c=document.createElement('div');c.className='cc';b.appendChild(c)}
-  for(let d=1;d<=30;d++){
-    const c=document.createElement('div');
-    c.className='cc'+(d===22?' hl':'');
-    c.textContent=d;
-    b.appendChild(c);
-  }
-})();
 
 /* ── ANIMASI BUKA AMPLOP ESTETIK ── */
 let envOpened = false;
@@ -901,7 +944,7 @@ function openEnv(){
 
 // YouTube Music Player
 var ytPlayer=null,ytReady=false,ytPlaying=false,ytPendingPlay=false;
-(function(){var t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t);})();
+(function(){var t=document.createElement('script');t.src='https://youtu.be/WGj9PPAoZ8w?si=XPZN1aXg3GkqnYaC';document.head.appendChild(t);})();
 function onYouTubeIframeAPIReady(){
   ytPlayer=new YT.Player('yt-player',{
     height:'1',width:'1',videoId:'2Vv-BfVoq4g',
