@@ -435,9 +435,7 @@ section>*:not(.bg-layer){position:relative;z-index:2}
     <div class="mono">I&amp;E</div>
   </div>
 
-  <div id="yt-container" style="position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;pointer-events:none;z-index:-1">
-    <div id="yt-player"></div>
-  </div>
+    <audio id="bgm" src="music.mp3" loop preload="auto"></audio>
 
   <div class="music-row reveal" id="musicBtn" onclick="toggleMusic()">
     <svg id="mico" width="27" height="27" viewBox="0 0 27 27">
@@ -846,32 +844,30 @@ function openEnv(){
   }, 1250);
 }
 
-// YouTube Music Player
-var ytPlayer=null,ytReady=false,ytPlaying=false,ytPendingPlay=false;
-var YT_VIDEO_ID='WGj9PPAoZ8w';
-(function(){var t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t);})();
-function onYouTubeIframeAPIReady(){
-  ytPlayer=new YT.Player('yt-player',{
-    height:'1',width:'1',videoId:YT_VIDEO_ID,
-    playerVars:{autoplay:0,controls:0,loop:1,playlist:YT_VIDEO_ID,fs:0,rel:0,iv_load_policy:3,modestbranding:1,playsinline:1},
-    events:{
-      onReady:function(){ytReady=true;ytPlayer.setVolume(70);if(ytPendingPlay){ytPlayer.playVideo();ytPendingPlay=false;}},
-      onStateChange:function(e){
-        if(e.data===YT.PlayerState.PLAYING)setMusicUI(true);
-        else if(e.data===YT.PlayerState.PAUSED||e.data===YT.PlayerState.ENDED)setMusicUI(false);
-      }
-    }
-  });
-}
+// Music Player (music.mp3)
+var bgm=document.getElementById('bgm'),ytPlaying=false;
+bgm.volume=0.7;
+bgm.addEventListener('play',function(){setMusicUI(true);});
+bgm.addEventListener('pause',function(){setMusicUI(false);});
 function setMusicUI(p){
   ytPlaying=p;
   document.getElementById('playPoly').setAttribute('points',p?'9,8 13,8 13,20 9,20':'10.5,8.5 19.5,13.5 10.5,18.5');
   document.getElementById('music-label').textContent=p?'Jeda Musik':'Putar Musik';
 }
-function toggleMusic(){
-  if(!ytReady){ytPendingPlay=true;return;}
-  ytPlaying?ytPlayer.pauseVideo():ytPlayer.playVideo();
-}
+function playMusic(){var pr=bgm.play();if(pr&&pr.catch)pr.catch(function(){});}
+function toggleMusic(){bgm.paused?playMusic():bgm.pause();}
+
+// Autoplay saat undangan dibuka; jika diblokir browser, mulai pada sentuhan/klik pertama
+playMusic();
+(function(){
+  var evts=['click','touchend','keydown'];
+  function firstPlay(e){
+    evts.forEach(function(n){document.removeEventListener(n,firstPlay,true);});
+    if(e.target.closest && e.target.closest('#musicBtn, #envelope')) return;
+    if(!ytPlaying) playMusic();
+  }
+  evts.forEach(function(n){document.addEventListener(n,firstPlay,true);});
+})();
 
 // Reveal Animasi Scroll — delay dihitung per section agar urutannya rapi
 const obs=new IntersectionObserver(entries=>{
